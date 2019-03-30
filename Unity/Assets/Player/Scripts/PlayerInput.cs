@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.Experimental.UIElements;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(GunController))]
 public class PlayerInput : MonoBehaviour
 {
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
+    private const int LEFT_MOUSE_BUTTON_INDEX = 0;
+
     [SerializeField]
     private float moveSpeed;
-    
+
     [SerializeField]
     private PlayerStats stats;
 
@@ -27,6 +26,7 @@ public class PlayerInput : MonoBehaviour
     {
         Move();
         LookAt();
+        Shoot();
     }
 
     private void Move()
@@ -46,6 +46,14 @@ public class PlayerInput : MonoBehaviour
         {
             var mousePoint = ray.GetPoint(rayDistance);
             stats.LookAtPoint = new Vector3(mousePoint.x, transform.position.y, mousePoint.z);;
+        }
+    }
+
+    private void Shoot()
+    {
+        if (Input.GetMouseButton(LEFT_MOUSE_BUTTON_INDEX))
+        {
+            stats.Shoot();
         }
     }
 }

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7673c703f364ddfb2584c9d0eb411ee, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  MoveVelocity: {x: 0, y: 0, z: 0}
+  LookAtPoint: {x: 2.6251326, y: 1.0000001, z: 8.581074}
+  equippedGun: {fileID: 0}
+  startingGun: {fileID: 5618111076346937299, guid: 38e6762664e7c2542ab4a8cd07df03bd,
+    type: 3}

@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerStats playerStats;
 
-    [SerializeField]
     private Rigidbody playerRigidbody;
 
     private void Start()
