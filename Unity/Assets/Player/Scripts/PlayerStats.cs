@@ -1,29 +1,34 @@
-
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Player stats", menuName = "Player/Stats", order = 1)]
 public class PlayerStats: ScriptableObject
 {
+    // Default params
+    public float moveSpeed;
+    public Gun startingGun;
+
+    // State
     public Vector3 MoveVelocity = Vector3.zero;
     public Vector3 LookAtPoint = Vector3.zero;
-
     public Gun equippedGun;
-    public Gun startingGun;
+
+    public void EquipStartingGun(Transform hand)
+    {
+        var gun = equippedGun ? equippedGun: startingGun; 
+        Equip(gun, hand);
+    }
 
     public void Equip(Gun gun, Transform hand)
     {
-        if (equippedGun != null)
-        {
-            DestroyImmediate(equippedGun);
-        }
         equippedGun = Instantiate(gun, hand.position, hand.rotation, hand.transform);
     }
 
     public void Shoot()
     {
-        if (equippedGun != null)
+        if (equippedGun == null)
         {
-            equippedGun.Shoot();
+            return;
         }
+        equippedGun.Shoot();
     }
 }

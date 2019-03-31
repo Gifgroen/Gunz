@@ -4,13 +4,12 @@
 [RequireComponent(typeof(GunController))]
 public class PlayerInput : MonoBehaviour
 {
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
-
-    private const int LEFT_MOUSE_BUTTON_INDEX = 0;
-
-    [SerializeField]
-    private float moveSpeed;
+    private struct Constants
+    {
+        public const int LEFT_MOUSE_BUTTON_INDEX = 0;
+        public const string HORIZONTAL = "Horizontal";
+        public const string VERTICAL = "Vertical";
+    }
 
     [SerializeField]
     private PlayerStats stats;
@@ -32,10 +31,10 @@ public class PlayerInput : MonoBehaviour
     private void Move()
     {
         var rawMovement = new Vector3(
-                Input.GetAxisRaw(HORIZONTAL),
+                Input.GetAxisRaw(Constants.HORIZONTAL),
                 0f,
-                Input.GetAxisRaw(VERTICAL));
-        stats.MoveVelocity = rawMovement.normalized * moveSpeed;
+                Input.GetAxisRaw(Constants.VERTICAL));
+        stats.MoveVelocity = rawMovement.normalized * stats.moveSpeed;
     }
 
     private void LookAt()
@@ -51,7 +50,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetMouseButton(LEFT_MOUSE_BUTTON_INDEX))
+        if (Input.GetMouseButton(Constants.LEFT_MOUSE_BUTTON_INDEX))
         {
             stats.Shoot();
         }

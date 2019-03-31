@@ -12,6 +12,6 @@ public class GunController : MonoBehaviour
 
     private void Start()
     {
-        playerStats.Equip(playerStats.startingGun, hand);
+        playerStats.EquipStartingGun(hand);
     }
 }
