@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 2311435133698661709, guid: ac6c55252d0bf314b88f896454dd7090,
     type: 3}
-  msBetweenShots: 220
-  velocity: 40
+  msBetweenShots: 120
+  velocity: 20
